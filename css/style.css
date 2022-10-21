@@ -43,6 +43,7 @@ img{
     height: 30%;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
     /* debug */
     border: 1px solid black;
 }
@@ -82,4 +83,33 @@ img{
 
 #img-thumb1{
     background-image: url(../img/01.webp);
+}
+
+
+/* BTNS */
+
+#next-btn , #prev-btn{
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#next-btn{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0 , -50%);
+}
+
+#prev-btn{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0 , -50%);
 }
