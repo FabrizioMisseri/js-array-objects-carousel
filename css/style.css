@@ -97,6 +97,7 @@ img{
     font-size: 1.1rem;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    cursor: pointer;
 }
 
 #next-btn{

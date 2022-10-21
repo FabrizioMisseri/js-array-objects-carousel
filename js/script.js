@@ -42,8 +42,27 @@ const arrayImgs = [
 
 // PSEUDO CODE
 // prendo le variabili globali che mi servono
+const containerTop = document.getElementById("container-top");
+const containerThumbs = document.getElementById("container-thumbs");
+let cardImgs;
+let cardThumbs;
+
 // scorrere l' arrayImgs ciclo FOR; creare elemento e inserirlo nel html con classi e ID
 // mettere foto con DIV foto; title e text in DIV description
+for(let i = 0; i < arrayImgs.length; i++) {
+    const object = arrayImgs[i];
+    cardImgs += `
+        <div class="img-container" style="background-image: img/${object["image"]};">
+            <div class="img-description">
+                <h2>${object["title"]}</h2>
+                <p>${object["text"]}</p>
+            </div>
+        </div>
+    `
+}
+
+containerTop.innerHTML = cardImgs
+
 // nascondere tutti gli elementi con classe hidden, tranne il primo classe active
 // fare la stessa cosa con THUMBS
 // scrivere funzione per i BTNS che rimuovano classe active e la addano alla foto succ. o prec.
