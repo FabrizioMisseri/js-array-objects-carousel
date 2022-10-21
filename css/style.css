@@ -91,3 +91,14 @@ img{
     left: 10px;
     transform: translate(0 , -50%);
 }
+
+
+/* UTILITIES */
+
+.active{
+    display: block;
+}
+
+.hidden{
+    display: none;
+}

@@ -46,6 +46,7 @@ const containerTop = document.getElementById("container-top");
 const containerThumbs = document.getElementById("container-thumbs");
 let cardsImg = "";
 let cardsThumb = "";
+let itemSelector = 0;
 
 // scorrere l' arrayImgs ciclo FOR; creare elemento e inserirlo nel html con classi e ID
 // mettere foto con DIV foto; title e text in DIV description
@@ -53,14 +54,14 @@ let cardsThumb = "";
 for(let i = 0; i < arrayImgs.length; i++) {
     const object = arrayImgs[i];
     cardsImg += `
-        <div style= "
+        <div class="card-image hidden"
+        style= "
         background-image: url(${object["image"]});
         background-position: center;
         background-size: cover;
         width: 100%;
         height: 100%;
         position: relative;
-        display: none;
         ">
             <div class="img-description">
                 <h2>${object["title"]}</h2>
@@ -88,6 +89,7 @@ for(let i = 0; i < arrayImgs.length; i++) {
     `;
 }
 
+// aggiungere i btns all' HTML
 containerThumbs.innerHTML = cardsThumb;
 containerThumbs.innerHTML += `
     <span id="next-btn">
@@ -99,4 +101,58 @@ containerThumbs.innerHTML += `
     </span>
 `;
 
+// seleziono i bottoni
+let nextBtn = document.getElementById("next-btn");
+let prevBtn = document.getElementById("prev-btn");
+
+// sleziono tutti gli item card-image
+const cardsImage = document.getElementsByClassName("card-image");
+cardsImage[itemSelector].classList.add("active");
+cardsImage[itemSelector].classList.remove("hidden");
+
 // scrivere funzione per i BTNS che rimuovano classe active e la addano alla foto succ. o prec.
+// next-btn
+nextBtn.addEventListener("click", stepNext);
+
+// prev-btn
+prevBtn.addEventListener("click", stepPrev);
+
+
+
+
+// FUNCTIONS
+
+/** STEP-NEXT BTN
+ * Description: passa alla foto successiva
+ */
+function stepNext() {
+    cardsImage[itemSelector].classList.remove("active");
+    cardsImage[itemSelector].classList.add("hidden");
+
+    if(itemSelector < cardsImage.length - 1){
+        itemSelector++;
+    } else {
+        itemSelector = 0;
+    }
+
+    cardsImage[itemSelector].classList.add("active");
+    cardsImage[itemSelector].classList.remove("hidden");
+}
+
+
+/** STEP-PREV BTN
+ * Description: passa alla foto precedente
+ */
+function stepPrev() {
+    cardsImage[itemSelector].classList.remove("active");
+    cardsImage[itemSelector].classList.add("hidden");
+    
+    if(itemSelector >  0){
+        itemSelector--;
+    } else {
+        itemSelector = cardsImage.length - 1;
+    }
+
+    cardsImage[itemSelector].classList.add("active");
+    cardsImage[itemSelector].classList.remove("hidden");
+}
