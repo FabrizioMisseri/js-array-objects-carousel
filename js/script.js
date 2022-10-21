@@ -45,10 +45,11 @@ const arrayImgs = [
 const containerTop = document.getElementById("container-top");
 const containerThumbs = document.getElementById("container-thumbs");
 let cardsImg = "";
-let cardsThumbs = "";
+let cardsThumb = "";
 
 // scorrere l' arrayImgs ciclo FOR; creare elemento e inserirlo nel html con classi e ID
 // mettere foto con DIV foto; title e text in DIV description
+// nascondere tutti gli elementi con classe hidden, tranne il primo classe active
 for(let i = 0; i < arrayImgs.length; i++) {
     const object = arrayImgs[i];
     cardsImg += `
@@ -59,6 +60,7 @@ for(let i = 0; i < arrayImgs.length; i++) {
         width: 100%;
         height: 100%;
         position: relative;
+        display: none;
         ">
             <div class="img-description">
                 <h2>${object["title"]}</h2>
@@ -70,6 +72,31 @@ for(let i = 0; i < arrayImgs.length; i++) {
 
 containerTop.innerHTML = cardsImg;
 
-// nascondere tutti gli elementi con classe hidden, tranne il primo classe active
 // fare la stessa cosa con THUMBS
+for(let i = 0; i < arrayImgs.length; i++) {
+    const object = arrayImgs[i];
+    cardsThumb += `
+        <div style= "
+        background-image: url(${object["image"]});
+        background-position: center;
+        background-size: cover;
+        width: calc(100% / 5);
+        height: 100%;
+        ">
+            
+        </div>
+    `;
+}
+
+containerThumbs.innerHTML = cardsThumb;
+containerThumbs.innerHTML += `
+    <span id="next-btn">
+        <i class="fa-solid fa-chevron-right"></i>
+    </span>
+
+    <span id="prev-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+    </span>
+`;
+
 // scrivere funzione per i BTNS che rimuovano classe active e la addano alla foto succ. o prec.
