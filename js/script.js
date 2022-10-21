@@ -52,7 +52,14 @@ let cardThumbs;
 for(let i = 0; i < arrayImgs.length; i++) {
     const object = arrayImgs[i];
     cardImgs += `
-        <div class="img-container" style="background-image: img/${object["image"]};">
+        <div style= "
+        background-image: url(${object["image"]});
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        ">
             <div class="img-description">
                 <h2>${object["title"]}</h2>
                 <p>${object["text"]}</p>
@@ -61,7 +68,7 @@ for(let i = 0; i < arrayImgs.length; i++) {
     `
 }
 
-containerTop.innerHTML = cardImgs
+containerTop.innerHTML = cardImgs;
 
 // nascondere tutti gli elementi con classe hidden, tranne il primo classe active
 // fare la stessa cosa con THUMBS
