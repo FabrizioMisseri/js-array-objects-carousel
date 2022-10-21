@@ -15,7 +15,7 @@
 // Milestone 2:
 // Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
 
-const arrayImages = [
+const arrayImgs = [
     {
         image: 'img/01.webp',
         title: 'Marvel\'s Spiderman Miles Morale',
@@ -41,4 +41,9 @@ const arrayImages = [
 
 
 // PSEUDO CODE
-// 
+// prendo le variabili globali che mi servono
+// scorrere l' arrayImgs ciclo FOR; creare elemento e inserirlo nel html con classi e ID
+// mettere foto con DIV foto; title e text in DIV description
+// nascondere tutti gli elementi con classe hidden, tranne il primo classe active
+// fare la stessa cosa con THUMBS
+// scrivere funzione per i BTNS che rimuovano classe active e la addano alla foto succ. o prec.
