@@ -142,7 +142,7 @@ invertBtn.addEventListener("click", switchSlideshow);
 stopBtn.addEventListener("click", stopSlideshow);
 
 // dopo 3 secondi switch dell' immagine a destra o a sinistra
-setInterval(switcher, 3000);
+setInterval(switcher, 50);
 
 
 
