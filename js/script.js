@@ -83,8 +83,9 @@ for(let i = 0; i < arrayImgs.length; i++) {
         background-size: cover;
         width: calc(100% / 5);
         height: 100%;
+        position: relative;
         ">
-            
+            <div class="veil dark-veil"></div>
         </div>
     `;
 }
@@ -110,6 +111,13 @@ const cardsImage = document.getElementsByClassName("card-image");
 cardsImage[itemSelector].classList.add("active");
 cardsImage[itemSelector].classList.remove("hidden");
 
+// seleziono tutti thumbs veil
+const veil = document.getElementsByClassName("veil");
+
+// al primo img-thumb rimuovo il velo oscurante 
+veil[itemSelector].classList.remove("dark-veil");
+veil[itemSelector].classList.add("border-green");
+
 // scrivere funzione per i BTNS che rimuovano classe active e la addano alla foto succ. o prec.
 // next-btn
 nextBtn.addEventListener("click", stepNext);
@@ -128,6 +136,8 @@ prevBtn.addEventListener("click", stepPrev);
 function stepNext() {
     cardsImage[itemSelector].classList.remove("active");
     cardsImage[itemSelector].classList.add("hidden");
+    veil[itemSelector].classList.add("dark-veil");
+    veil[itemSelector].classList.remove("border-green");
 
     if(itemSelector < cardsImage.length - 1){
         itemSelector++;
@@ -137,6 +147,8 @@ function stepNext() {
 
     cardsImage[itemSelector].classList.add("active");
     cardsImage[itemSelector].classList.remove("hidden");
+    veil[itemSelector].classList.remove("dark-veil");
+    veil[itemSelector].classList.add("border-green");
 }
 
 
@@ -146,6 +158,8 @@ function stepNext() {
 function stepPrev() {
     cardsImage[itemSelector].classList.remove("active");
     cardsImage[itemSelector].classList.add("hidden");
+    veil[itemSelector].classList.add("dark-veil");
+    veil[itemSelector].classList.remove("border-green");
     
     if(itemSelector >  0){
         itemSelector--;
@@ -155,4 +169,6 @@ function stepPrev() {
 
     cardsImage[itemSelector].classList.add("active");
     cardsImage[itemSelector].classList.remove("hidden");
+    veil[itemSelector].classList.remove("dark-veil");
+    veil[itemSelector].classList.add("border-green");
 }
