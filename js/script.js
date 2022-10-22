@@ -15,6 +15,12 @@
 // Milestone 2:
 // Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
 
+// BONUS 2:
+// Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
+
+// BONUS 3:
+// Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
+
 const arrayImgs = [
     {
         image: 'img/01.webp',
@@ -47,6 +53,8 @@ const containerThumbs = document.getElementById("container-thumbs");
 let cardsImg = "";
 let cardsThumb = "";
 let itemSelector = 0;
+let switcherFlag = true;
+let autoplayFlag = true;
 
 // scorrere l' arrayImgs ciclo FOR; creare elemento e inserirlo nel html con classi e ID
 // mettere foto con DIV foto; title e text in DIV description
@@ -125,6 +133,17 @@ nextBtn.addEventListener("click", stepNext);
 // prev-btn
 prevBtn.addEventListener("click", stepPrev);
 
+// prelevo i btns della console
+const invertBtn = document.getElementById("invert-btn");
+const stopBtn = document.getElementById("stop-btn");
+
+// aggiungo eventi al click ai btns della console switch
+invertBtn.addEventListener("click", switchSlideshow);
+stopBtn.addEventListener("click", stopSlideshow);
+
+// dopo 3 secondi switch dell' immagine a destra o a sinistra
+setInterval(switcher, 3000);
+
 
 
 
@@ -171,4 +190,36 @@ function stepPrev() {
     cardsImage[itemSelector].classList.remove("hidden");
     veil[itemSelector].classList.remove("dark-veil");
     veil[itemSelector].classList.add("border-green");
+}
+
+
+/** SWITCHER
+ * Description: funzione che switcha le slide a destra o a sinistra
+ */
+function switcher() {
+    if(autoplayFlag === true) {
+        if (switcherFlag === true) {
+            stepNext();
+        } else {
+            stepPrev();
+        }
+    }
+}
+
+
+function switchSlideshow() {
+    if (switcherFlag === true) {
+        switcherFlag = false;
+    } else if (switcherFlag === false){
+        switcherFlag = true;
+    }
+}
+
+
+function stopSlideshow() {
+    if(autoplayFlag === true){
+        autoplayFlag = false;
+    } else {
+        autoplayFlag = true;
+    }
 }
