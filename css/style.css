@@ -52,6 +52,7 @@ img{
 /* TOP CONTAINER */
 
 .img-description{
+    width: 100%;
     position: absolute;
     top: 20px;
     right: 0;
@@ -131,8 +132,4 @@ img{
 
 .border-green{
     border: 3px solid rgb(34, 231, 34);
-}
-
-.remove-event{
-    pointer-events: none;
 }
