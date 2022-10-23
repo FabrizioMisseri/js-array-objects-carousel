@@ -132,3 +132,7 @@ img{
 .border-green{
     border: 3px solid rgb(34, 231, 34);
 }
+
+.remove-event{
+    pointer-events: none;
+}

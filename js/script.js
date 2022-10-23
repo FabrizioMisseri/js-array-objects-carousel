@@ -21,6 +21,9 @@
 // BONUS 3:
 // Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 
+// BONUS 1:
+// Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
+
 const arrayImgs = [
     {
         image: 'img/01.webp',
@@ -85,7 +88,8 @@ containerTop.innerHTML = cardsImg;
 for(let i = 0; i < arrayImgs.length; i++) {
     const object = arrayImgs[i];
     cardsThumb += `
-        <div style= "
+        <div class="interactive-tumbnail"
+        style= "
         background-image: url(${object["image"]});
         background-position: center;
         background-size: cover;
@@ -142,7 +146,17 @@ invertBtn.addEventListener("click", switchSlideshow);
 stopBtn.addEventListener("click", stopSlideshow);
 
 // dopo 3 secondi switch dell' immagine a destra o a sinistra
-setInterval(switcher, 50);
+setInterval(switcher, 200);
+
+// costruisco l' array miniature prendendo tutte le carte miniature e aggiungo interazione
+const thumbnails = document.getElementsByClassName("interactive-tumbnail");
+
+for(let i = 0; i < thumbnails.length; i++) {
+    const thisThumbnail = thumbnails[i];
+    thisThumbnail.addEventListener("click", function(){
+        moveToImage(i);
+    });
+}
 
 
 
@@ -207,6 +221,9 @@ function switcher() {
 }
 
 
+/** SWITCH SLIDESHOW
+ * Description: cambia lo stato del flag che decide l' ordine di scorrimento (se verso dx o sx)
+ */
 function switchSlideshow() {
     if (switcherFlag === true) {
         switcherFlag = false;
@@ -216,10 +233,32 @@ function switchSlideshow() {
 }
 
 
+/** STOP SLIDESHOW
+ * Description: semplice bottone di start/stop dell' autoplay
+ */
 function stopSlideshow() {
     if(autoplayFlag === true){
         autoplayFlag = false;
     } else {
         autoplayFlag = true;
     }
+}
+
+
+/** MOVE TO IMAGE
+ * Description: al click della minatura ci si sposta alla relativa immagine
+ * @param {number} i: è il parametro contatore che gli passiamo dal ciclo for
+ */
+function moveToImage(i) {
+    cardsImage[itemSelector].classList.remove("active");
+    cardsImage[itemSelector].classList.add("hidden");
+    veil[itemSelector].classList.add("dark-veil");
+    veil[itemSelector].classList.remove("border-green");
+
+    itemSelector = i;
+
+    cardsImage[itemSelector].classList.add("active");
+    cardsImage[itemSelector].classList.remove("hidden");
+    veil[itemSelector].classList.remove("dark-veil");
+    veil[itemSelector].classList.add("border-green");
 }
