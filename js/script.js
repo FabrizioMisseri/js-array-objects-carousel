@@ -48,6 +48,8 @@ const arrayImgs = [
     }
 ];
 
+alert("benvenuto nella game roulette!");
+
 
 // PSEUDO CODE
 // prendo le variabili globali che mi servono
@@ -146,7 +148,7 @@ invertBtn.addEventListener("click", switchSlideshow);
 stopBtn.addEventListener("click", stopSlideshow);
 
 // dopo 3 secondi switch dell' immagine a destra o a sinistra
-setInterval(switcher, 200);
+setInterval(switcher, 150);
 
 // costruisco l' array miniature prendendo tutte le carte miniature e aggiungo interazione
 const thumbnails = document.getElementsByClassName("interactive-tumbnail");
